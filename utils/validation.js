@@ -13,11 +13,11 @@ const validateSignUpData = (req) => {
 
 
 const validateProfileUpdateData = (req) => {
-  if(req.body.skills.length > 50) {
+  if(req.body?.skills?.length > 50) {
     throw new Error("Too much skills not allowed")
   }
 
-  const allowedProfileData = ["age", "gender", "skills", "about", "profileUrl"];
+  const allowedProfileData = ["firstName", "lastName", "age", "gender", "skills", "about", "photoUrl"];
   const isProfileEditAllowed = Object.keys(req.body).every(field => allowedProfileData.includes(field))
   return isProfileEditAllowed;
 }
